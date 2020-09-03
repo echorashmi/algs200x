@@ -1,10 +1,121 @@
 
-Array is not sorted at: 6 
+
+Left: 7, Right: 9
 
 
-Original Array: 
-0	315	402	355	27	322	391	322	119	80	
+
+After Randomization: 
+
+322	315	402	355	27	322	391	0	119	80	
+Pivot: 322
+
+
+j: 7
+
+
+NewDataArray: 
+
+315	27	0	119	80	322	322	402	355	391	
+
+
+
+Left: 4, Right: 4
+
+
+
+After Randomization: 
+
+80	27	0	119	315	322	322	402	355	391	
+Pivot: 80
+
+
+j: 3
+
+
+NewDataArray: 
+
+27	0	80	119	315	322	322	402	355	391	
+
+
+
+Left: 1, Right: 1
+
+
+
+After Randomization: 
+
+0	27	80	119	315	322	322	402	355	391	
+Pivot: 0
+
+
+j: 1
+
+
+NewDataArray: 
+
+0	27	80	119	315	322	322	402	355	391	
+
+
+
+Left: 4, Right: 4
+
+
+
+After Randomization: 
+
+0	27	80	119	315	322	322	402	355	391	
+Pivot: 315
+
+
+j: 5
+
+
+NewDataArray: 
+
+0	27	80	119	315	322	322	402	355	391	
+
+
+
+Left: 8, Right: 9
+
+
+
+After Randomization: 
+
+0	27	80	119	315	322	322	402	355	391	
+Pivot: 355
+
+
+j: 8
+
+
+NewDataArray: 
+
+0	27	80	119	315	322	322	355	402	391	
+
+
+
+Left: 9, Right: 9
+
+
+
+After Randomization: 
+
+0	27	80	119	315	322	322	355	402	391	
+Pivot: 391
+
+
+j: 9
+
+
+NewDataArray: 
+
+0	27	80	119	315	322	322	355	391	402	
+
+
+Array is sorted
+
 
 Array After Sorting: 
-0	27	80	119	315	322	391	322	355	402	
+0	27	80	119	315	322	322	355	391	402	
 

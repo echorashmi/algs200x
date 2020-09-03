@@ -1,0 +1,1 @@
+1. rand() - why is the pivot always the same? 322? There seems to be something amiss here. I'd expect it to be a random number in each program run (thereby truly picking a random pivot), but it hasn't. I'm comfortable for now with a fixed pivot, but I got to go back and look at this once I'm done with everything else. 
