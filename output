@@ -1,0 +1,10 @@
+
+Array is not sorted at: 6 
+
+
+Original Array: 
+0	315	402	355	27	322	391	322	119	80	
+
+Array After Sorting: 
+0	27	80	119	315	322	391	322	355	402	
+
