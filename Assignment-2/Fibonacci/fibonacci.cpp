@@ -6,7 +6,6 @@ int fibonacci_naive(int n)
 {
     if (n <= 1)
         return n;
-    printf("%i\n", n);
     return fibonacci_naive(n - 1) + fibonacci_naive(n - 2);
 }
 
@@ -27,14 +26,11 @@ int fibonacci_fast(int n)
     return fibonacci_array[n];
 }
 
-void test_solution() 
+void main_test()
 {
-    assert(fibonacci_fast(3) == 2);
-    assert(fibonacci_fast(10) == 55);
-    for (int n = 0; n < 20; ++n)
-    {
-        assert(fibonacci_fast(n) == fibonacci_naive(n));
-    }
+    #include "tests.cpp"
+    TestCase testcase;
+    testcase.test_solution();
 }
 
 int main(int argc, char *argv[]) 
@@ -49,7 +45,7 @@ int main(int argc, char *argv[])
         std::cin >> n;
         //std::cout << "Naive: " << fibonacci_naive(n) << '\n';
         //test_solution();
-        std::cout << "Fast(" << n << "): " << fibonacci_fast(n) << '\n';
+        std::cout << fibonacci_fast(n) << '\n';
         return 0;
     }
 }

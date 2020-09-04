@@ -1,19 +1,12 @@
-/*
-    File to call test.cpp. 
-*/
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <cassert>
-#include <iostream>
-#include "fibonacci.cpp"
-
-int main(void)
-{
-    int n = 10;
-    //std::cout << "Naive: " << fibonacci_naive(n) << '\n';
-    //test_solution();
-    std::cout << "Fast(" << n << "): " << fibonacci_fast(n) << '\n';
-    return 0;
-}
+class TestCase{
+    public:
+    void test_solution() 
+    {
+        assert(fibonacci_fast(3) == 2);
+        assert(fibonacci_fast(10) == 55);
+        for (int n = 0; n < 20; ++n)
+        {
+            assert(fibonacci_fast(n) == fibonacci_naive(n));
+        }
+    }
+};
