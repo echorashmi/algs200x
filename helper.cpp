@@ -1,12 +1,25 @@
-const int data_length = 100000;
+const int data_length = 10;
 int dataset[data_length];
 
 class HelperClass
 {
     public:
+    void print_array(int *array_to_print, int length_of_array)
+    {
+        printf("------------------------------------");
+        printf("\n\nArray:");
+        printf("\n\n");
+        for(int i = 0; i < length_of_array; i++)
+        {
+            printf("%i\t", array_to_print[i]);
+        }
+        printf("\n\n");
+        printf("------------------------------------");
+    }
+
     bool compare_two_arrays(int *array_one, int *array_two, int array_length)
     {
-        for(size_t i = 0; i < array_length; i++) //How to get the length of a array passed to a function?
+        for(size_t i = 0; i < array_length; i++)
         {
             if(array_one[i] != array_two[i])
             {

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "helper.cpp"
+//#include "partition.cpp"
 
 using namespace std;
 using std::swap;
@@ -16,30 +17,28 @@ typedef struct midpoints_struct{
 
 int partition2(int *data, int left, int right) 
 {
-    int pivot = data[left];
-    int midpoint = left;
+    int pivot = data[left]; //O(1)
+    int midpoint = left; //O(n)? or //O(1)
     
-    for (int i = left + 1; i <= right; i++) 
+    for (int i = left + 1; i <= right; i++) //Times O(n)
     {
-        if (data[i] <= pivot) 
+        if (data[i] <= pivot)
         {
-            midpoint++;
-            swap(data[i], data[midpoint]);
+            midpoint++; //O(1)
+            swap(data[i], data[midpoint]); //O(1)
         }
     }
-    swap(data[left], data[midpoint]);
-    return midpoint;
+    swap(data[left], data[midpoint]); //O(1)
+    return midpoint; //O(1)
 }
 
-//Re-writing the procedure again. 
-midpoints_struct partition_threeway(int *data, int left, int right, bool debug)
+midpoints_struct partition_threeway(int *data, int left_index, int right_index, bool debug)
 {
     int newdata[data_length];
-    int c1 = 0, region1[data_length]; //Less than Pivot
-    int c2 = 0, region2[data_length]; //Equal to Pivot
-    int c3 = 0, region3[data_length]; //Greater than Pivot
-    int pivot = data[left];
-    //printf("\nPivot: %i\n", pivot);
+    int c1 = 0, region1[data_length];
+    int c2 = 0, region2[data_length];
+    int c3 = 0, region3[data_length];
+    int pivot = data[left_index];
 
     for(int i = 0; i < data_length; i++)
     {
@@ -75,27 +74,12 @@ midpoints_struct partition_threeway(int *data, int left, int right, bool debug)
     }
 
     j = c1 + c2;
-    //printf("\n\nj: %i\n", j);
     for(int i = 0; i < c3; i++)
     {
         data[j] = region3[i];
         newdata[j] = region3[i];
         j++;
     }
-
-    /*
-    printf("\n\n");
-    printf("NewDataArray: \n\n");
-    for (int i = 0; i < data_length; i++)
-    {
-        printf("%i\t", newdata[i]);
-    }
-    printf("\n\n");
-    */
-
-    //printf("c1: %i, c2: %i, c3: %i", c1, c2, c3); //Where c1, c2, c3 are the counts of each array. 
-    //m1 will be c1. m2 will be c1+c2? I think?
-
     midpoints_struct midpoints;
     midpoints.midpoint_one = c1;
     midpoints.midpoint_two = c1 + c2;
@@ -111,19 +95,11 @@ void randomized_quick_sort(int *data, int left, int right, int use_threeway_part
     }
     time_t t;
     srand((unsigned) time(&t));
-    //We want to choose a random array item as a Pivot element, not just the first one. Reasons: https://stackoverflow.com/questions/41513856/can-someone-clarify-the-difference-between-quicksort-and-randomized-quicksort
+    
     int random_index_of_array = left + rand() % (right - left + 1);
     int midpoint_one, midpoint_two;
-    //printf("\n\nLeft: %i, Right: %i\n\n", random_index_of_array, right);
+    
     swap(data[left], data[random_index_of_array]);
-
-    /*
-    std::cout << "\n\nAfter Randomization: \n\n";
-    for(int i = 0; i < data_length; i++)
-    {
-        std::cout << data[i] << "\t";
-    }
-    */
 
     if (use_threeway_partition == 1)
     {
@@ -135,7 +111,7 @@ void randomized_quick_sort(int *data, int left, int right, int use_threeway_part
     {
         int midpoint = partition2(data, left, right);
         randomized_quick_sort(data, left, midpoint - 1, use_threeway_partition, debug);
-        randomized_quick_sort(data, midpoint + 1, right, use_threeway_partition, debug);
+        randomized_quick_sort(data, midpoint, right, use_threeway_partition, debug);
     }
 }
 
@@ -158,7 +134,7 @@ int main(int argc, char * argv[])
         
         //int data_three_way[array_length] = {0, 315, 402, 355, 27, 322, 391, 322, 119, 80};
         
-        int data_three_way[array_length];
+        //int data_three_way[array_length];
         //Generate a Test Data Set with Random Numbers:
         helper_object.generate();
         
@@ -168,15 +144,6 @@ int main(int argc, char * argv[])
             data_three_way[i] = dataset[i];
             data_two_way[i]   = dataset[i];
         }
-        
-
-        /*
-        std::cout << "\n\nOriginal Array: \n";
-        for(int i = 0; i < array_length; i++)
-        {
-            std::cout << data_three_way[i] << "\t";
-        }
-        */
 
         //Call Quick Sort using Three Way Partition: 
         randomized_quick_sort(data_three_way, 0, array_length - 1, use_threeway_partition = 1, debug);
@@ -188,14 +155,6 @@ int main(int argc, char * argv[])
 
         //Output the Comparision Result of Two Way v/s Three Way Partition. 
         std::cout << "\n\nComparision Result: " << helper_object.compare_two_arrays(data_three_way, data_two_way, array_length);
-        
-        /*
-        std::cout << "\n\nArray After Sorting: \n";
-        for(int i = 0; i < array_length; i++)
-        {
-            std::cout << data_three_way[i] << "\t";
-        }
-        */
 
         std::cout << "\n\n";
     }
@@ -211,9 +170,12 @@ int main(int argc, char * argv[])
         }
 
         randomized_quick_sort(data, 0, n - 1, use_threeway_partition = 1, debug);
+        
+        printf("\n\nOutput: \n\n");
         for (size_t i = 0; i < n; ++i) 
         {
             std::cout << data[i] << ' ';
         }
+        printf("\n\n");
     }
 }
