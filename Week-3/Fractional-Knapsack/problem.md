@@ -37,11 +37,11 @@ Steps:
 DONE 1. Design an Algorithm
     High Level Algorithm:
         DONE a. Calculate value per unit weight of all items
-        b. Sort by value per unit weight in decreasing order - TODO
-        c. Compare highest value item to capacity. 
-            i. If it's available weight is greater than or equal to capacity: 
+        DONE b. Sort by value per unit weight in decreasing order - TODO
+        DONE c. Compare highest value item to capacity. 
+            DONE i. If it's available weight is greater than or equal to capacity: 
                 Return the capacity * value per unit weight
-            ii. If it's available weight is less than capacity:
+            DONE ii. If it's available weight is less than capacity:
                 Add it to the total weight and total value of the loot. 
                 Iterate (c) until condition (i) has been met and the loot is complete.
 NOT DOING 2. Prove that it is correct (By using Proof by Induction or Proof by Contradiction).
@@ -61,13 +61,13 @@ NOT DOING 3. Try to estimate it's expected running time on the most complex inpu
     O(nlogn) based on what I remember from the video lecture. Not quiet sure how we get this, so I have to figure that out. 
 
 [B]: Implement The Algorithm:
-1. In main() take an argument argv to check that this is my internal test case or live case that the grader is expecting
-2. Run it using the Compiler Flags Provided: make -f MakeFile
+DONE 1. In main() take an argument argv to check that this is my internal test case or live case that the grader is expecting
+DONE 2. Run it using the Compiler Flags Provided: make -f MakeFile
 - (This is Empirical Analysis - analysing correctness by Experimentation and Observation - what I typically call "Brute Force")
-3. Write the Sort Function
+DONE 3. Write the Sort Function
 
 [C]: Testing & Debugging:
-1. Small Data Set
+DONE 1. Small Data Set
 2. Large Data Set (Check how long it takes to process a large data set)
 3. Use generate() to generate random numbers as inputs
 4. Check boundary values to ensure program processes correctly with short numbers (Below 1) and long sequences (Above 1000)

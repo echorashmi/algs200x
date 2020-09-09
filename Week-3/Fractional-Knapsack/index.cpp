@@ -1,20 +1,64 @@
-/*
-    Let's make an assumption that the arrays are already sorted by value per unit weight. 
-*/
-
 #include <iostream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
 
+/*
+* Failed Case #6 out of 13. | Got: 6474.026286 Expected: 7777.731
+* TODo: Write Test Cases for all edge scenarios as documented in problem.md file. 
+*
+*
+*/
+
+using namespace std;
 using std::vector;
+
+int partition_vector(vector <int> &values, vector <int> &weights, vector <double> &data, int left, int right)
+{
+    int pivot = data.operator[](left);
+    int midpoint = left;
+
+    for (int i = left + 1; i <= right; i++)
+    {
+        if (data.operator[](i) >= pivot)
+        {
+            midpoint++;
+            swap(data.operator[](i), data.operator[](midpoint));
+            swap(values.operator[](i), values.operator[](midpoint));
+            swap(weights.operator[](i), weights.operator[](midpoint));
+        }
+    }
+    swap(data.operator[](left), data.operator[](midpoint));
+    swap(values.operator[](left), values.operator[](midpoint));
+    swap(weights.operator[](left), weights.operator[](midpoint));
+    return midpoint;
+}
+
+void sort_value_per_unit_vector(vector <int> &values, vector <int> &weights, vector <double> &value_per_unit_array, int left, int right)
+{
+    if(left > right)
+        return;
+    
+    time_t t;
+    srand((unsigned) time(&t));
+
+    int random_index_of_array = left + rand() % (right - left + 1);
+
+    swap(value_per_unit_array.operator[](left), value_per_unit_array.operator[](random_index_of_array));
+    swap(values.operator[](left), values.operator[](random_index_of_array));
+    swap(weights.operator[](left), weights.operator[](random_index_of_array));
+
+    int midpoint = partition_vector(values, weights, value_per_unit_array, left, right);
+    sort_value_per_unit_vector(values, weights, value_per_unit_array, left, midpoint - 1);
+    sort_value_per_unit_vector(values, weights, value_per_unit_array, midpoint + 1, right);
+}
  
 void sort_vectors(vector<double> values_per_unit, vector <int> weights, vector <int> values)
 {
     //TODO: Sort Function of Vector Items. All 3 Vectors need to be sorted simultaneously to preserve the integrity of the calculation. Temporarily skipping this step with the assumption that the input 3 arrays are always sorted in descending order of value_per_unit.
 }
 
-double get_optimal_value(int knapsack_capacity, vector<int> weights, vector<int> values) 
+double get_optimal_value(int knapsack_capacity, vector<int> &weights, vector<int> &values) 
 {
     double total_value = 0.0;
     double total_weight = 0.0;
@@ -31,7 +75,9 @@ double get_optimal_value(int knapsack_capacity, vector<int> weights, vector<int>
     } 
 
     //Step 2: Sort by decreasing value_per_unit
-    sort_vectors(values_per_unit, weights, values);
+    //sort_vectors(values_per_unit, weights, values);
+    sort_value_per_unit_vector(values, weights, values_per_unit, 0, weights.size()-1);
+    
     /*
     std::cout << "\n\nStarting KnapSack Capacity: \t" << knapsack_capacity;
     std::cout << "\nStarting KnapSack Value: \t" << total_value << std::endl << std::endl;
@@ -50,6 +96,7 @@ double get_optimal_value(int knapsack_capacity, vector<int> weights, vector<int>
         }
         else if(weights.operator[](i) > knapsack_capacity)
         {
+            //TODO: Still a bug here, not sure what. 
             //Only take the required amount here. 
             total_weight += knapsack_capacity;
             total_value += values_per_unit.operator[](i) * knapsack_capacity;
@@ -88,6 +135,7 @@ double get_optimal_value(int knapsack_capacity, vector<int> weights, vector<int>
                     << "\n";
     }
     */
+    
 
     return total_value;
 }
