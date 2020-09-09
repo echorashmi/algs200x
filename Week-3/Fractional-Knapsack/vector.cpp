@@ -70,4 +70,20 @@ int main()
     {
         std::cout << vectorOfIntegers.operator[](i) << " ";
     }
+
+    std::cout << "\n\n-------------------------\n\n";
+    std::cout << "Inserting multiple elements into a Vector: \n";
+    
+    int arrayOfIntegers[] = {10, 20, 30, 40, 50};
+    vectorOfIntegers.insert(vectorOfIntegers.end(), 
+                            arrayOfIntegers, 
+                            arrayOfIntegers + 
+                                (sizeof(arrayOfIntegers) 
+                                    / sizeof(arrayOfIntegers[0])));
+    for (int i = 0; i < vectorOfIntegers.size(); i++)
+    {
+        std::cout << vectorOfIntegers.operator[](i) << " ";
+    }
+
+
 }

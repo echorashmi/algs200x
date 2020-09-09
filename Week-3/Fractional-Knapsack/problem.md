@@ -64,6 +64,7 @@ NOT DOING 3. Try to estimate it's expected running time on the most complex inpu
 1. In main() take an argument argv to check that this is my internal test case or live case that the grader is expecting
 2. Run it using the Compiler Flags Provided: make -f MakeFile
 - (This is Empirical Analysis - analysing correctness by Experimentation and Observation - what I typically call "Brute Force")
+3. Write the Sort Function
 
 [C]: Testing & Debugging:
 1. Small Data Set
