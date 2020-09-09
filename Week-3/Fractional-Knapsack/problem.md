@@ -68,21 +68,23 @@ DONE 3. Write the Sort Function
 
 [C]: Testing & Debugging:
 DONE 1. Small Data Set
-2. Large Data Set (Check how long it takes to process a large data set)
-3. Use generate() to generate random numbers as inputs
-4. Check boundary values to ensure program processes correctly with short numbers (Below 1) and long sequences (Above 1000)
-5. Check output when input is 0.
-6. Check output when input is 1000.
-7. Check empty values
+NOT DOING 2. Large Data Set (Check how long it takes to process a large data set)
+DONE 3. Use generate() to generate random numbers as inputs
+NOT DOING 4. Check boundary values to ensure program processes correctly with short numbers (Below 1) and long sequences (Above 1000)
+NOT DOING 5. Check output when input is 0.
+NOT DOING 6. Check output when input is 1000.
+NOT DOING 7. Check empty values
 
 [D]: Stress Testing:
-1. Implement another algorithm to check the 2 programs producing the same result
-2. Generate Random Test Cases:
-3. Generate Biased Test Cases:
+NOT DOING 1. Implement another algorithm to check the 2 programs producing the same result
+NOT DOING 2. Generate Random Test Cases:
+NOT DOING 3. Generate Biased Test Cases:
     a. With only small numbers
     b. With only large numbers
     c. With String Inputs
     d. With both composite and Prime integers
 
 [E]: Submit to Grader
-1. Prepare the file for submission - Take inputs in expected format, and outputs in expected format. 
+DONE 1. Figure out the flags situation - When I compile using the provided flags, I get funky outputs, but when I compile using my "make" I get the expected output. What do these flags really do?
+    g++ -pipe -O2 -std=c++14 index.cpp -o index -lm 
+DONE 1. Prepare the file for submission - Take inputs in expected format, and outputs in expected format. 

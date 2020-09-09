@@ -3,19 +3,12 @@
 #include <cstdlib>
 #include <ctime>
 
-/*
-* Failed Case #6 out of 13. | Got: 6474.026286 Expected: 7777.731
-* TODo: Write Test Cases for all edge scenarios as documented in problem.md file. 
-*
-*
-*/
-
 using namespace std;
 using std::vector;
 
 int partition_vector(vector <int> &values, vector <int> &weights, vector <double> &data, int left, int right)
 {
-    int pivot = data.operator[](left);
+    double pivot = data.operator[](left);
     int midpoint = left;
 
     for (int i = left + 1; i <= right; i++)
@@ -116,7 +109,7 @@ double get_optimal_value(int knapsack_capacity, vector<int> &weights, vector<int
     std::cout << "\n\nEnding KnapSack Capacity: \t" << knapsack_capacity << std::endl;
     std::cout << "\nEnding KnapSack Value: \t" << total_value << std::endl << std::endl;
     */
-
+    
     /*
     //Print Out the Vectors:
     std::cout << "Values Per Unit\tValues\t\tWeights\n";
@@ -145,36 +138,22 @@ int main(int argc, char * argv[])
     bool test = false;
     if(argc > 1)
     {
-        test = true;
+        test = true; 
     }
-    if(test == true) //Use Hard Coded Stub Values while I am working 
+    if(test == true)
     {
         number_of_spices = 10;
         knapsack_capacity = 10;
-
-        int arr_values[] = {24, 23, 15, 14, 18, 19, 6, 8, 12, 4};
-        int arr_weights[] = {1, 1, 1, 2, 3, 5, 2, 3, 5, 3};
-        /*
-        int arr_values[]  = {14, 6, 23, 4, 15, 8, 12, 19, 18, 24};
-        int arr_weights[] = {2, 2, 1, 3, 1, 3, 5, 5, 3, 1};
-        */
-
+        
+        #include "tests.cpp"
+        //TestCase testcase;
+        //testcase.generate(values, weights);
+        
+        int arr_values[] = {7, 5, 24, 22, 17, 17, 12, 11, 4, 2};
+        int arr_weights[] = {1, 1, 5, 5, 4, 5, 4, 5, 5, 4};
         values.insert(values.end(), arr_values, arr_values+(sizeof(arr_values)/sizeof(arr_values[0])));
         weights.insert(weights.end(), arr_weights, arr_weights+(sizeof(arr_weights)/sizeof(arr_weights[0])));
-
-        /*        
-        //Using Random Numbers:
-        int stub_value;
-        int stub_weight;
-        srand(time(0));
-        for (int i = 0; i < number_of_spices; i++) 
-        {
-            stub_value  = rand() % 25 + 1; // On a Scale from 1 to $20;
-            stub_weight = rand() % 5 + 1; // On a Scale from 1 to 20 kgs;
-            values.push_back(stub_value);
-            weights.push_back(stub_weight);   
-        }
-        */
+        
     }
     else //Else use User-Input Values for Live Testing with User Inputs
     {
