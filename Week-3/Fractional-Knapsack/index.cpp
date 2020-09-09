@@ -52,11 +52,6 @@ void sort_value_per_unit_vector(vector <int> &values, vector <int> &weights, vec
     sort_value_per_unit_vector(values, weights, value_per_unit_array, left, midpoint - 1);
     sort_value_per_unit_vector(values, weights, value_per_unit_array, midpoint + 1, right);
 }
- 
-void sort_vectors(vector<double> values_per_unit, vector <int> weights, vector <int> values)
-{
-    //TODO: Sort Function of Vector Items. All 3 Vectors need to be sorted simultaneously to preserve the integrity of the calculation. Temporarily skipping this step with the assumption that the input 3 arrays are always sorted in descending order of value_per_unit.
-}
 
 double get_optimal_value(int knapsack_capacity, vector<int> &weights, vector<int> &values) 
 {
