@@ -1,0 +1,1 @@
+In Divide & Conquer, the strategy is to shrink the input size down to the smallest possible. 
