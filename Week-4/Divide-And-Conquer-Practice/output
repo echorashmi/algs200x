@@ -1,0 +1,17 @@
+
+-----Start-------
+Iteration Starting: 
+Haystack:	1	2	3	4	5	
+Needle: 	2
+Index: 	0
+Haystack Length: 	5
+-------End--------
+
+-----Start-------
+Iteration Starting: 
+Haystack:	1	2	3	4	5	
+Needle: 	2
+Index: 	1
+Haystack Length: 	5
+-------End--------
+-1
