@@ -1,17 +1,17 @@
-
------Start-------
-Iteration Starting: 
-Haystack:	1	2	3	4	5	
-Needle: 	2
-Index: 	0
-Haystack Length: 	5
--------End--------
-
------Start-------
-Iteration Starting: 
-Haystack:	1	2	3	4	5	
-Needle: 	2
-Index: 	1
-Haystack Length: 	5
--------End--------
--1
+------Start--------
+1
+2
+3
+------End--------
+3
+Array Value at Index: 3 is: 4
+------Start--------
+1
+2
+------End--------
+2
+Array Value at Index: 2 is: 3
+------Start--------
+1
+------End--------
+Sum: 2

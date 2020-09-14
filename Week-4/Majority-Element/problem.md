@@ -46,7 +46,7 @@ Steps:
             if(count > n/2):
                 return ai
         return "No Majority Element"
-1. c. Design an Algorithm that uses Divide and Conquer Technique to design an O(nlogn) Algorithm. 
+DONE 1. c. Design an Algorithm that uses Divide and Conquer Technique to design an O(nlogn) Algorithm. 
     i. Split array into 2 halves
     ii. Get number and max_count from first array
     iii. Get number and max_count from second array
